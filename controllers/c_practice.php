@@ -17,10 +17,10 @@ class practice_controller extends practicebase_controller {
         // echo '</pre>';
 
 
-        echo '<pre>'; echo "this publicvar: "; echo $this->publicvar;
+    /*    echo '<pre>'; echo "this publicvar: "; echo $this->template->publicvar;
         echo '</pre>';
-        echo '<pre>'; echo "this protectedvar:";  echo $this->protectedvar;
-        echo '</pre>';
+        echo '<pre>'; echo "this protectedvar:";  echo $this->template->protectedvar;
+        echo '</pre>';*/
 
         # Pass data to the view
         $this->template->content->publicvar = $this->publicvar;

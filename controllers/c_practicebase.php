@@ -18,7 +18,7 @@ class practicebase_controller {
 		$privatevar = "Can only use me in this controller class";
 
 		# ?? So we can use $publicvar in views	
-		$this->template 	  = View::instance('_v_template');		
+		$this->template 	  = View::instance('_v_practicetemplate');		
 		$this->template->set_global('publicvar', $publicvar);		
 	}
 	

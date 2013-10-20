@@ -13,25 +13,7 @@
 </head>
 
 <body>	
-	<ul id='menu'>
-
-	    <li><a href='/'>Home</a></li>
-
-	    <!-- Menu for users who are logged in -->
-	    <?php if(is_object($user) && $user): ?>
-	        <li><a href='/users/logout'>Logout</a></li>
-	        <li><a href='/users/profile'>Profile</a></li>
-
-	    <!-- Menu options for users who are not logged in -->
-	    <?php else: ?>
-
-	        <li><a href='/users/signup'>Sign up</a></li>
-	        <li><a href='/users/login'>Log in</a></li>
-
-	    <?php endif; ?>
-
-	</ul>
-
+	
 
 	<?php if(isset($content)) echo $content; ?>
 
