@@ -16,22 +16,30 @@ class index_controller extends base_controller {
 		
 		# Any method that loads a view will commonly start with this
 		# First, set the content of the template with a view file
-			$this->template->content = View::instance('v_index_index');
+		$this->template->content = View::instance('v_index_index');
 			
 		# Now set the <title> tag
-			$this->template->title = "CSCI-E15 Project 2 Microblog";
+		$this->template->title = "CSCI-E15 Project 2 Microblog";
 	
 		# CSS/JS includes
-			/*
+		/*
 			$client_files_head = Array("");
 	    	$this->template->client_files_head = Utils::load_client_files($client_files);
 	    	
 	    	$client_files_body = Array("");
 	    	$this->template->client_files_body = Utils::load_client_files($client_files_body);   
-	    	*/
+	    */
 	      					     		
+
+	    echo '<pre>';
+		print_r($this->user);
+		echo '</pre>';
+		echo '<pre>';
+		print_r($_COOKIE);
+		echo '</pre>';
+
 		# Render the view
-			echo $this->template;
+		echo $this->template;
 
 	} # End of method
 	
