@@ -35,16 +35,28 @@ class users_controller extends base_controller {
         # Insert this user into the database
         $user_id = DB::instance(DB_NAME)->insert('users', $_POST);
 
-        # For now, just confirm they've signed up - 
-        # TBD: how do you know the insert succeeded?  
+        # Question: how do you know the insert succeeded?  
+        # Send them to the login page
         Router::redirect('/users/login');
      
     }
 
-    public function login() {
+    public function login($error = NULL) {
+
+        echo '<pre>';
+        print_r($this->user);
+        echo '</pre>';
+        echo '<pre>';
+        print_r($_COOKIE);
+        echo '</pre>';
+
+
         # Setup view
         $this->template->content = View::instance('v_users_login');
         $this->template->title   = "Login";
+
+        # Pass data to the view
+        $this->template->content->error = $error;
 
         # Render template
         echo $this->template;
@@ -71,9 +83,8 @@ class users_controller extends base_controller {
         if(!$token) {
 
             # Send them back to the login page
-            # TBD : how do we tell them the login failed ?
-            echo "Login failed";
-            Router::redirect("/users/login/");
+            # Question : how do we tell them the login failed ?
+            Router::redirect("/users/login/error");
 
 
         # But if we did, login succeeded! 
@@ -90,7 +101,7 @@ class users_controller extends base_controller {
             */
             setcookie("token", $token, strtotime('+1 year'), '/');
 
-            # Send them to the main page - or whever you want them to go
+            # Send them to the main page
             Router::redirect("/");
 
         }

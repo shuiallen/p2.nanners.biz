@@ -5,7 +5,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
 	<!-- Common CSS/JS -->
-	<!-- tbd -->
+	<link rel="stylesheet" type="text/css" href="../css/test.css">
 
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
@@ -13,20 +13,20 @@
 </head>
 
 <body>	
-	<div id='menu'>
+	<ul id='menu'>
 
-	    <a href='/'>Home</a>
+	    <li><a href='/'>Home</a></li>
 
 	    <!-- Menu for users who are logged in -->
 	    <?php if(isset($user)): ?>
-	        <a href='/users/logout'>Logout</a>
-	        <a href='/users/profile'>Profile</a>
+	        <li><a href='/users/logout'>Logout</a></li>
+	        <li><a href='/users/profile'>Profile</a></li>
 
 	    <!-- Menu options for users who are not logged in -->
 	    <?php else: ?>
 
-	        <a href='/users/signup'>Sign up</a>
-	        <a href='/users/login'>Log in</a>
+	        <li><a href='/users/signup'>Sign up</a></li>
+	        <li><a href='/users/login'>Log in</a></li>
 
 	    <?php endif; ?>
 

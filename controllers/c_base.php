@@ -11,7 +11,6 @@ class base_controller {
 
 	-------------------------------------------------------------------------------------------------*/
 	public function __construct() {
-						
 		# Instantiate User obj
 			$this->userObj = new User();
 			
