@@ -19,7 +19,8 @@ class practicebase_controller {
 
 		# ?? So we can use $publicvar in views	
 		$this->template 	  = View::instance('_v_practicetemplate');		
-		$this->template->set_global('publicvar', $publicvar);		
+		$this->template->set_global('publicvar', $publicvar);	
+		$this->template->set_global('protectedvar', $protectedvar);		
 	}
 	
 } # eoc
