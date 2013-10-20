@@ -21,6 +21,7 @@
 	    <?php if(is_object($user) && $user): ?>
 	        <li><a href='/users/logout'>Logout</a></li>
 	        <li><a href='/users/profile'>Profile</a></li>
+	        <li><a href='/users/users'>Users</a></li>
 
 	    <!-- Menu options for users who are not logged in -->
 	    <?php else: ?>

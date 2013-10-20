@@ -1,3 +1,4 @@
+<div class=vertical-container>
 <h2> Log in </h2>
 <form class=login method='POST' action='/users/p_login'>
 
@@ -21,3 +22,4 @@
     <input type='submit' value='Log in'>
 
 </form>
+</div>

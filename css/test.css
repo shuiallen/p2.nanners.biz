@@ -7,7 +7,7 @@
 .login {
   border: 5px solid #d0d2d5;
   border-radius: 4px;
-  margin: 0 0 20px 20px;
+  margin: auto;
   padding: 30px;
   max-width: 250px;
   background: #6600FF;
@@ -16,4 +16,14 @@
 
 li {
   display:inline-block;
+}
+
+.vertical-container {
+  display: -webkit-flex;
+  display: flex;
+  height: 300px;
+  border: 2px solid black;
+}
+.vertically-centered {
+  margin: auto;
 }

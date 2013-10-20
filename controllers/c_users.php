@@ -43,14 +43,6 @@ class users_controller extends base_controller {
 
     public function login($error = NULL) {
 
-        echo '<pre>';
-        print_r($this->user);
-        echo '</pre>';
-        echo '<pre>';
-        print_r($_COOKIE);
-        echo '</pre>';
-
-
         # Setup view
         $this->template->content = View::instance('v_users_login');
         $this->template->title   = "Login";
@@ -127,6 +119,15 @@ class users_controller extends base_controller {
     }
 
     public function profile($user_name = NULL) {
+
+        echo '<pre>';
+        print_r($this->user);
+        echo '</pre>';
+        echo '<pre>';
+        print_r($_COOKIE);
+        echo '</pre>';
+
+
 
         # If user is blank, they're not logged in; redirect them to the login page
         if(!$this->user) {
