@@ -12,4 +12,7 @@
 	<ul> See a list of all other users</ul>
 	<ul> +1 feature?</ul>
 	<ul> Basic look and feel - only the outside container and nav bar</ul>
+
+	<ul> Live DB created, but test DB not transferred yet </ul>
+	<ul> My Posts query doesn't work </ul>
 </p>
