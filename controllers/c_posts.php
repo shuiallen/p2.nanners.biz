@@ -173,7 +173,7 @@ class posts_controller extends base_controller {
         $posts = DB::instance(DB_NAME)->select_rows($q);
 
         # Pass data (user info and post) to the view
-        $this->template->content->post       = $posts;
+        $this->template->content->posts       = $posts;
 
         # Render View
         echo $this->template;

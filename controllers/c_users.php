@@ -134,5 +134,19 @@ class users_controller extends base_controller {
         echo $this->template;
     }
 
-    
+    public function p_profile_upload() {
+        if ($_FILES["file"]["error"] > 0)
+          {
+          echo "Error: " . $_FILES["file"]["error"] . "<br>";
+          }
+        else
+          {
+          echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+          echo "Type: " . $_FILES["file"]["type"] . "<br>";
+          echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+          echo "Stored in: " . $_FILES["file"]["tmp_name"];
+          }
+
+          # continue with instructions from http://www.w3schools.com/php/php_file_upload.asp
+    }
 } # end of the class
