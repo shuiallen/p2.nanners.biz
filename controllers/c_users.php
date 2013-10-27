@@ -42,7 +42,7 @@ class users_controller extends base_controller {
     }
 
     public function login($error = NULL) {
-
+ 
         # Setup view
         $this->template->content = View::instance('v_users_login');
         $this->template->title   = "Login";
@@ -144,4 +144,5 @@ class users_controller extends base_controller {
         echo $this->template;
     }
 
+    
 } # end of the class

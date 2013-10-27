@@ -13,32 +13,40 @@
 </head>
 
 <body>	
-	<ul id='menu'>
+	<div class=background-container>
+		<ul id='nav-bar'>
 
-	    <li><a href='/'>Home</a></li>
+		    <li><a href='/'>Home</a></li>
 
-	    <!-- Menu for users who are logged in -->
-	    <?php if(is_object($user) && $user): ?>
-	        <li><a href='/users/logout'>Logout</a></li>
-	        <li><a href='/users/profile'>Profile</a></li>
-	        <li><a href='/users/users'>Users</a></li>
+		    <!-- Menu for users who are logged in -->
+		    <?php if(is_object($user) && $user): ?>
+		        <li><a href='/users/logout'>Logout</a></li>
+		        <li><a href='/users/profile'>My Profile</a></li>
+		        <li><a href='/posts/users'>Users</a></li>
+		        <li><a href='/posts/add'>Add a Post</a></li>
+		        <li><a href='/posts'>View Followed Posts</a></li>
+      		    <li><a href='/posts/myposts'>View My Posts</a></li>
+      		    <li><a href='/posts/allposts'>View All Posts</a></li>
+		        <li><a href='/posts/search'>Search Posts</a></li>
 
-	    <!-- Menu options for users who are not logged in -->
-	    <?php else: ?>
+		    <!-- Menu options for users who are not logged in -->
+		    <?php else: ?>
 
-	        <li><a href='/users/signup'>Sign up</a></li>
-	        <li><a href='/users/login'>Log in</a></li>
+		        <li><a href='/users/signup'>Sign up</a></li>
+		        <li><a href='/users/login'>Log in</a></li>
 
-	    <?php endif; ?>
+		    <?php endif; ?>
 
-	</ul>
+		</ul>
 
 
-	<?php if(isset($content)) echo $content; ?>
+		<?php if(isset($content)) echo $content; ?>
 
-	<!-- Common CSS/JSS -->
-	<!-- tbd -->
-	
-	<?php if(isset($client_files_body)) echo $client_files_body; ?>
+		<!-- Common CSS/JSS -->
+		<!-- tbd -->
+		
+		<?php if(isset($client_files_body)) echo $client_files_body; ?>
+
+    </div>  
 </body>
 </html>

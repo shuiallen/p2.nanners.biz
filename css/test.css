@@ -27,3 +27,30 @@ li {
 .vertically-centered {
   margin: auto;
 }
+
+.background-container {
+  position: relative;
+  border: 5px solid #d0d2d5;
+  border-radius: 4px;
+}
+
+#nav-bar {
+  background: Gold;
+  display: block;
+}
+
+body {
+  background: #ffffff;
+  color: #333333;
+  font-size: 0.875em;
+  line-height: 1.65em;
+  font-family: 'PT Sans', Arial, "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+}
+
+a {
+  color: #336699;
+}
+a:focus,
+a:hover {
+  color: #ef6465;
+}

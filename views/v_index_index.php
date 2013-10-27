@@ -1,27 +1,15 @@
 <h1>Welcome to <?=APP_NAME?><?php if($user) echo ', '.$user->first_name; ?></h1>
 
 <p>
-	This is the landing page for Project 2
-</p>
-
-
-<p>
-	TBD:  Need a style template for overall look and feel
+	This is the landing page for Project 2 Nanners Blog
 </p>
 <p>
-	TBD:  Need a Sign up button
-</p>
-<p>
-	TBD:  Need a Login button
-</p>
-
-<p>
-	TBD:  When a user is logged in, user have the following operations <br>
-	         See all users button
-	         Create a post button
-	         View my posts
-	         View posts with Search criteria
-</p>
-<p>
-	<strong>Since everything is in working order, you should now delete <?php echo APP_PATH?>diagnostics.php</strong>
+	<h1> Status </h1>
+	<ul> Landing page - in progress </ul>
+	<ul> Navigation bar with different options if user is logged in or not</ul>
+	<ul> Sign up - done</ul>
+	<ul> Log in  - done</ul>
+	<ul> See a list of all other users</ul>
+	<ul> +1 feature?</ul>
+	<ul> Basic look and feel - only the outside container and nav bar</ul>
 </p>
