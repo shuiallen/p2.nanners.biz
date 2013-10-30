@@ -18,7 +18,7 @@ If you want a different default time format for this app, set it below
 
 # When email is sent out from the server, where should it come from?
 # Ideally, this should match the domain name
-	define('APP_EMAIL', 'webmaster@p2.nanners.biz'); 
+	define('APP_EMAIL', 'shuiallen@yahoo.com'); 
 
 /* 
 A email designated to receive messages from the server. Examples:
