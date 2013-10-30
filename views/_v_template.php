@@ -14,7 +14,7 @@
 
 <body>	
 	<div class=background-container>
-		<span class=nav-bar>
+		<div class=nav-bar>
 			<ul>
 			    <li><a href='/'>Home</a></li>
 
@@ -36,16 +36,16 @@
 
 			    <?php endif; ?>
 			</ul>
-		</span>
+		</div>
+	</div>  
 
+	<?php if(isset($content)) echo $content; ?>
 
-		<?php if(isset($content)) echo $content; ?>
+	<!-- Common CSS/JSS -->
+	<!-- tbd -->
+	
+	<?php if(isset($client_files_body)) echo $client_files_body; ?>
 
-		<!-- Common CSS/JSS -->
-		<!-- tbd -->
-		
-		<?php if(isset($client_files_body)) echo $client_files_body; ?>
-
-    </div>  
+    
 </body>
 </html>

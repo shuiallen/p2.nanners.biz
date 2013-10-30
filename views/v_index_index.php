@@ -4,7 +4,8 @@
 	Have fun discussing Nanners!
 </p>
 
-<h1> Status </h1>
+<div class=background-container>
+	<h1> Status </h1>
 	<ul>
 		<li> Landing page - this page updated with current status </li>
 		<li> Navigation bar with different options if user is logged in or not - done</li>
@@ -26,4 +27,5 @@
 		<li> Defect: login with bad input or no input displays page without formatting</li>
 		<li> Defect: Placement of replace profile photo is not correct </li>
 		<li> Enhance: Redirect after posting should do something better </li>
-	 </ul>
+	</ul>
+</div>
