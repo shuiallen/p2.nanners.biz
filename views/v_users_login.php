@@ -1,25 +1,25 @@
-<div class=vertical-container>
 <h2> Log in </h2>
-<form class=login method='POST' action='/users/p_login'>
+<div class=vertical-container>
+    <form class=formfields method='POST' action='/users/p_login'>
 
-    Email<br>
-    <input type='text' name='email'>
+        Email<br>
+        <input type='text' name='email' autofocus>
 
-    <br><br>
+        <br><br>
 
-    Password<br>
-    <input type='password' name='password'>
+        Password<br>
+        <input type='password' name='password'>
 
-    <br><br>
+        <br><br>
 
-    <?php if(isset($error)): ?>
-        <div class='error'>
-            Login failed. Please double check your email and password.
-        </div>
-        <br>
-    <?php endif; ?>
+        <?php if(isset($error)): ?>
+            <div class='error'>
+                Login failed. Please double check your email and password.
+            </div>
+            <br>
+        <?php endif; ?>
 
-    <input type='submit' value='Log in'>
+        <input type='submit' value='Log in' >
 
-</form>
+    </form>
 </div>

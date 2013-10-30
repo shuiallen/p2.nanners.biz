@@ -15,7 +15,7 @@ class posts_controller extends base_controller {
 
         # Set up the View
         $this->template->content = View::instance('v_posts_index');
-        $this->template->title   = "All Posts";
+        $this->template->title   = "Nanners microblog Posts";
 
         # Query
         $q = 'SELECT 
@@ -67,14 +67,13 @@ class posts_controller extends base_controller {
         # Give feedback to user
         # tbd: put this stuff into another view and redirect to a better place
         echo "Your post has been added.<br> <a href='/posts/add'>Add another</a>";
-     
     }
 
 
     public function users() {
         # Set up View   
         $this->template->content = View::instance('v_posts_users');
-        $this->template->title   = "View users";
+        $this->template->title   = "Nanners microblog users";
 
         # Query for all users
         $q = "SELECT * 
@@ -119,7 +118,9 @@ class posts_controller extends base_controller {
     public function unfollow($user_id_followed) {
 
         # Delete this connection
-        $where_condition = 'WHERE user_id = '.$this->user->user_id.' AND user_id_followed = '.$user_id_followed;
+        $where_condition = 'WHERE user_id = '.$this->user->user_id.' 
+                            AND user_id_followed = '.$user_id_followed;
+
         DB::instance(DB_NAME)->delete('users_users', $where_condition);
 
         # Send them back
@@ -132,7 +133,7 @@ class posts_controller extends base_controller {
 
         # Set up the View
         $this->template->content = View::instance('v_posts_index');
-        $this->template->title   = "Posts";
+        $this->template->title   = "Nanners microblog Posts";
 
         # Build the query
         $q = "SELECT 
@@ -158,7 +159,7 @@ class posts_controller extends base_controller {
     public function myposts() {
         # Set up View   
         $this->template->content = View::instance('v_posts_index');
-        $this->template->title   = "View posts";
+        $this->template->title   = "Nanners microblog posts";
 
         # Query for my posts
         $q = "SELECT posts.content, posts.created,

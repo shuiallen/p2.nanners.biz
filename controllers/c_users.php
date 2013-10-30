@@ -6,7 +6,7 @@ class users_controller extends base_controller {
     } 
 
     public function index() {
-        echo "This is the index page";
+        Router::redirect('/posts/users');
     }
 
     public function signup() {
@@ -124,6 +124,7 @@ class users_controller extends base_controller {
             Router::redirect('/users/login');
         }
 
+        echo $this->user->avatar;
         # If they weren't redirected away, continue:
 
         # Setup view
@@ -135,18 +136,13 @@ class users_controller extends base_controller {
     }
 
     public function p_profile_upload() {
-        if ($_FILES["file"]["error"] > 0)
-          {
-          echo "Error: " . $_FILES["file"]["error"] . "<br>";
-          }
-        else
-          {
-          echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-          echo "Type: " . $_FILES["file"]["type"] . "<br>";
-          echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-          echo "Stored in: " . $_FILES["file"]["tmp_name"];
-          }
 
-          # continue with instructions from http://www.w3schools.com/php/php_file_upload.asp
+        # Upload the chosen filen and store in avatars directory with the user_id to identify the file
+        Upload::upload($_FILES, "/uploads/avatars/", array("jpg", "jpeg", "gif", "png"), $this->user->user_id);
+
+        # Update the user's avatar in the database
+        DB::instance(DB_NAME)->update('users', Array("avatar" => $this->user->user_id.".jpg"),
+                                      "WHERE user_id = ".$this->user->user_id);
+        Router::redirect("/users/profile");
     }
 } # end of the class
