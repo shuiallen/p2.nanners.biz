@@ -66,7 +66,8 @@ class posts_controller extends base_controller {
         # Question: how do you know the insert succeeded?  
         # Give feedback to user
         # tbd: put this stuff into another view and redirect to a better place
-        echo "Your post has been added.<br> <a href='/posts/add'>Add another</a>";
+        Router::redirect("/posts/myposts");
+        # echo "Your post has been added.<br> <a href='/posts/add'>Add another</a>";
     }
 
 
@@ -168,9 +169,10 @@ class posts_controller extends base_controller {
             FROM posts
             INNER JOIN users
               ON posts.user_id = users.user_id
-            WHERE posts.user_id = ".$this->user->user_id;
+            WHERE posts.user_id = ".$this->user->user_id."
+              ORDER BY posts.created DESC";
 
-        # Store the result array in the variable $users
+        # Store the result array in the variable $posts
         $posts = DB::instance(DB_NAME)->select_rows($q);
 
         # Pass data (user info and post) to the view

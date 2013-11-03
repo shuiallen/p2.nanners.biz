@@ -15,7 +15,7 @@
 		<li> See a list of all other users - done</li>
 		<li> Follow or unfollow users </li>
 		<li> View followed posts - does not include self by default </li>
-		<li> +1 feature - View my posts and all posts - done </li>
+		<li> +1 feature - View my posts and View all posts, redirect to My posts after adding post - done </li>
 		<li> +1 feature - Display logged in user's profile, it's not beautiful</li>
 		<li> +1 feature - Upload an image and display on profile page </li>
 		<li> Basic look and feel - only the outside container and nav bar</li>
