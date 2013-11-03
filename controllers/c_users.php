@@ -9,18 +9,49 @@ class users_controller extends base_controller {
         Router::redirect('/posts/users');
     }
 
-    public function signup() {
+    public function signup($error = NULL) {
 
         # Setup view
             $this->template->content = View::instance('v_users_signup');
             $this->template->title   = "Sign Up";
 
+        # Pass data to the view
+        $this->template->content->error = $error;
+
         # Render template
-            echo $this->template;
+        echo $this->template;
 
     }
 
     public function p_signup() {
+        echo "got here";
+        # The input form sets required, so this might be overkill in this simple project
+        # But this allows signup to be used programmatically
+        # Check input for blank fields , error if any are blank;
+        foreach($_POST as $field => $value){
+            if(empty($value)) { 
+                Router::redirect('/users/signup/blanks');  
+            }
+        }       
+
+        # Check that this email address is unique
+        $q = "SELECT email 
+                FROM users 
+                WHERE email = '".$_POST['email']."'"; 
+
+        $email = DB::instance(DB_NAME)->select_field($q);
+        
+        # If we found a record with the same email, reject the signup
+        if($email) {
+            Router::redirect("/users/signup/duplicate");
+        }
+
+        # Check that the email address is in a valid format
+        # Comment this out because I want to use non-existent email addresses during testing
+        # and I'm not using real email functions yet
+        // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        //    Router::redirect("/users/signup/invalidemail");
+        // }
 
         # More data we want stored with the user
         $_POST['created']  = Time::now();

@@ -64,10 +64,7 @@ class posts_controller extends base_controller {
         DB::instance(DB_NAME)->insert('posts', $_POST);
 
         # Question: how do you know the insert succeeded?  
-        # Give feedback to user
-        # tbd: put this stuff into another view and redirect to a better place
         Router::redirect("/posts/myposts");
-        # echo "Your post has been added.<br> <a href='/posts/add'>Add another</a>";
     }
 
 
@@ -156,7 +153,7 @@ class posts_controller extends base_controller {
 
     }
 
-    # this gets all of my posts
+    # This gets all logged-in user's posts (my posts)
     public function myposts() {
         # Set up View   
         $this->template->content = View::instance('v_posts_index');
