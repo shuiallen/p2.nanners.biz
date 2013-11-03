@@ -11,6 +11,7 @@
 <?php endif; ?>
 
 <div class=vertical-container>
+	<img src=<?=$user->avatar?> alt="UserAvatar" width="160" height="120">
 	<?php if($user->avatar != PLACE_HOLDER_IMAGE): ?>
 		<p> <strong>Replace your profile photo: </strong></p>
 	<?php else: ?>

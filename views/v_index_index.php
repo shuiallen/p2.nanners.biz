@@ -14,18 +14,18 @@
 		<li> Log out  - done</li>
 		<li> See a list of all other users - done</li>
 		<li> Follow or unfollow users </li>
-		<li> View followed posts - does not include self </li>
+		<li> View followed posts - does not include self by default </li>
 		<li> +1 feature - View my posts and all posts - done </li>
 		<li> +1 feature - Display logged in user's profile, it's not beautiful</li>
 		<li> +1 feature - Upload an image and display on profile page </li>
 		<li> Basic look and feel - only the outside container and nav bar</li>
 
-		<li> todo Live DB created, but test DB not transferred yet </li>
 		<li> todo Review for DRY </li>
 		<li> todo check error handling </li>
-		<li> todo code validation </li>
-		<li> Defect: login with bad input or no input displays page without formatting</li>
+		<li> add checking of blank fields for signup and login </li>
+		<li> check for unique email addresses on signup </li>
+		<li> think about other error conditions </li>
 		<li> Defect: Placement of replace profile photo is not correct </li>
-		<li> Enhance: Redirect after posting should do something better </li>
+		<li> Enhance: Redirect after posting should do something better - redirect to myposts </li>
 	</ul>
 </div>
