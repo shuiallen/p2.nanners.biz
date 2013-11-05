@@ -29,10 +29,11 @@
 		<li> +1 features 
 			<ul>
 				<li> View my posts and View all posts, redirect to My posts after adding post</li>
-				<li> Display logged in user's profile; add or replace a profile photo </li>
+				<li> Display logged in user's profile; add or replace a profile photo
 					<ul>
 						<li> Layout is not beautiful; Placement of replace profile photo is not great.</li>
 					</ul>
+				</li>
 			</ul>
 		</li>
 		<li> Basic look and feel
