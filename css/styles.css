@@ -23,6 +23,15 @@
   display: flex;
   border: 2px solid black;
   max-width: 400px;
+  position: absolute;
+}
+
+.right-side-bar {
+  display: -webkit-flex;
+  display: flex;
+  border: 2px solid black;
+  margin-left: 400px;
+  max-width: 400px;
 }
 
 .background-container {

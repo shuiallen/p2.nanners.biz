@@ -24,13 +24,16 @@
     </form>
 </div>
 <br>
+
+<div class="right-side-bar">
+	<?=$avatar;?>    
+</div>
+<div class=right-side-bar>
 <p> Profile created :
     <time datetime="<?=Time::display($user->created,'Y-m-d G:i')?>">
          <?=Time::display($user->created)?>
     </time>
 </p>
-<div class="vertical-container">
-	<?=$avatar;?>    
 </div>
 
 
