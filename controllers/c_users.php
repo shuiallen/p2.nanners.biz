@@ -64,6 +64,7 @@ class users_controller extends base_controller {
 
     // Look for blank values in form data, skipping noted exceptions
     private function hasBlanks($formdata, $skip) {
+
         foreach($formdata as $field => $value){
             if (in_array($field, $skip))
                 continue;
@@ -72,10 +73,12 @@ class users_controller extends base_controller {
             }
         }
         return false;  
+
     }
 
     // Is this email address already used by an existing user?
     private function uniqueEmail($email) {
+
         # Check that this email address is unique
         $q = "SELECT email 
                 FROM users 
@@ -88,11 +91,13 @@ class users_controller extends base_controller {
             return false;
         }
         return true;
+
     }
 
     // This is a util that could be moved to a Utilities library
     // This is a hack to at least get an email address in the format 'name@emailhost'
     private function validEmail($email) {
+
         # Check that the email address is in a valid format
         # Comment this out because I want to use non-existent email addresses during testing
         # and I'm not using real email functions yet
@@ -110,6 +115,7 @@ class users_controller extends base_controller {
         if (strlen($name) > 0 && strlen($email)-1 > $atpos)
             return true;
         return false;
+
     }
 
     public function login($error = NULL) {
@@ -170,6 +176,7 @@ class users_controller extends base_controller {
     }
 
     public function logout() {
+
         # Generate and save a new token for next login
         $new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
 
@@ -185,9 +192,11 @@ class users_controller extends base_controller {
 
         # Send them to the main page
         Router::redirect("/");
+
     }
 
     public function profile($error = NULL) {
+
         # If user is blank, they're not logged in; redirect them to the login page
         if(!$this->user) {
             Router::redirect('/users/login');
@@ -207,6 +216,7 @@ class users_controller extends base_controller {
 
         # Render template
         echo $this->template;
+        
     }
 
     public function p_update () {
@@ -214,23 +224,19 @@ class users_controller extends base_controller {
         # Prevent SQL injection attacks by sanitizing the data the user entered in the form
         $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
-        // foreach($_POST as $field => $value){
-        //     echo $field."=".$value;
-        //     echo "<br>";
-        // }
-
-
-        # Update the user's data
+         # Update the user's data
         DB::instance(DB_NAME)->update(
             'users', $_POST, "WHERE user_id = ".$this->user->user_id);
         Router::redirect("/users/profile");
        
     }
+
     public function p_profile_upload() {
 
         # Upload the chosen filen and store in avatars directory with the user_id to identify the file
         $file = Upload::upload($_FILES, "/uploads/avatars/", array("jpg", "jpeg", "gif", "png"), $this->user->user_id);
 
+        // Is there a better way to check for error ?
         if ($file == 'Invalid file type.') {
             Router::redirect('/users/profile/error');
         }

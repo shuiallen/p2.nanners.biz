@@ -46,15 +46,14 @@
 			<ul>
 				<li> Check for blank fields for signup and login </li>
 				<li> Check for unique email addresses on signup</li>
-				<li> Other error conditions ? </li>
 				<li> Upload of invalid file type reports an error </li>
 			</ul>
 		</li>
 		<li> Code structure
 			<ul>			
-				<li> check sanitizing for sql injection attacks? </li>
-				<li> todo Review for DRY </li>
-				<li> Code validation - ran once, check again before submitting </li>
+				<li> Sanitize data from input forms - signup, login, update </li>
+				<li> Review for DRY </li>
+				<li> Code validation </li>
 			</ul>
 		</li>
 		<li> Testing on live server </li>

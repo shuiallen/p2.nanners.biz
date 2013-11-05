@@ -1,6 +1,6 @@
 <div>
 	<?php if($user->avatar != PLACE_HOLDER_IMAGE): ?>
-		<img src=<?=$user->avatar?> alt="UserAvatar" width="300" height="120">
+		<img src=<?=$user->avatar?> alt="UserAvatar" width="200" height="120">
 	<?php endif; ?>
 	<br>
 	<?php if($user->avatar != PLACE_HOLDER_IMAGE): ?>
