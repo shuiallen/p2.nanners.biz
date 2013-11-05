@@ -14,7 +14,7 @@
 
 	    <?php if(isset($error)): ?>
 		    <div class='error'>
-		            Invalid file type.
+		            Invalid file type or File may too be large (2MB limit).
 		    </div>
 		<?php endif; ?>
 

@@ -34,6 +34,11 @@
 					<li> Layout is not beautiful; Placement of replace profile photo is not great.</li>
 				</ul>
 			</li>
+			<li> A communal photo gallery - anyone can post a photo with a caption
+				<ul>
+					<li> Again the layout is not beautiful but it works.</li>
+				</ul>
+			</li>
 			</ul>
 		</li>
 		<li> Basic look and feel

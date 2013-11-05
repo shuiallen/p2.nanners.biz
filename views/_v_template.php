@@ -27,6 +27,7 @@
 			        <li><a href='/posts'>View Followed Posts</a></li>
 	      		    <li><a href='/posts/myposts'>View My Posts</a></li>
 	      		    <li><a href='/posts/allposts'>View All Posts</a></li>
+	      		    <li><a href='/gallery'>Gallery</a></li>
 
 			    <!-- Menu options for users who are not logged in -->
 			    <?php else: ?>

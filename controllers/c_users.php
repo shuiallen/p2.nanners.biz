@@ -216,7 +216,7 @@ class users_controller extends base_controller {
 
         # Render template
         echo $this->template;
-        
+
     }
 
     public function p_update () {
@@ -237,7 +237,7 @@ class users_controller extends base_controller {
         $file = Upload::upload($_FILES, "/uploads/avatars/", array("jpg", "jpeg", "gif", "png"), $this->user->user_id);
 
         // Is there a better way to check for error ?
-        if ($file == 'Invalid file type.') {
+        if ($file == 'Invalid file type.' || $file == 'Error moving file') {
             Router::redirect('/users/profile/error');
         }
 
