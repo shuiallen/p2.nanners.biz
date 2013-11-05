@@ -3,20 +3,24 @@
     <form class=formfields method='POST' action='/users/p_signup'>
         <?php if(isset($error) && $error == "blanks"): ?>
             <div class='error'>
-                All fields are required.
+                Missing required fields.
             </div>
             <br>
         <?php endif; ?>
         First Name<br>
-        <input type='text' name='first_name' >
+        <input type='text' name='first_name' required>
         <br><br>
 
         Last Name<br>
-        <input type='text' name='last_name'>
+        <input type='text' name='last_name' required>
+        <br><br>
+
+        Nick Name (optional)<br>
+        <input type='text' name='nickname'>
         <br><br>
 
         Email<br>
-        <input type='text' name='email'>
+        <input type='text' name='email' required>
         <br><br>
 
         <?php if(isset($error)): ?>
@@ -33,7 +37,7 @@
         <?php endif; ?>
 
         Password<br>
-        <input type='password' name='password' >
+        <input type='password' name='password' required >
         <br><br>
 
         <input type='submit' value='Sign up'>

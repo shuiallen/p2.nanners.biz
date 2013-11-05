@@ -3,12 +3,12 @@
     <form class=formfields method='POST' action='/users/p_login'>
 
         Email<br>
-        <input type='text' name='email' autofocus>
+        <input type='text' name='email' autofocus required>
 
         <br><br>
 
         Password<br>
-        <input type='password' name='password'>
+        <input type='password' name='password' required>
 
         <br><br>
 

@@ -24,13 +24,14 @@ class users_controller extends base_controller {
     }
 
     public function p_signup() {
-        echo "got here";
         # The input form sets required, so this might be overkill in this simple project
         # But this allows signup to be used programmatically
         # Check input for blank fields , error if any are blank;
         foreach($_POST as $field => $value){
+            if ($field == 'nickname')
+                continue;
             if(empty($value)) { 
-                Router::redirect('/users/signup/blanks');  
+               Router::redirect('/users/signup/blanks');  
             }
         }       
 
@@ -51,6 +52,17 @@ class users_controller extends base_controller {
         # and I'm not using real email functions yet
         // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         //    Router::redirect("/users/signup/invalidemail");
+        // }
+
+        // This is a hack to at least get an email address in the format 'user@emailhost'
+        $atpos = strpos($_POST['email'],'@');
+        $useremail = strstr($_POST['email'], '@', true);
+
+        # If we didn't find an '@' in the email, or
+        # there isn't a string before and after the @
+        // if (!$atpos || !(strlen($useremail) > 0 && $atpos == strlen($email)-1)) {
+
+        //     Router::redirect("/users/signup/invalidemail");
         // }
 
         # More data we want stored with the user
@@ -106,9 +118,7 @@ class users_controller extends base_controller {
         if(!$token) {
 
             # Send them back to the login page
-            # Question : how do we tell them the login failed ?
             Router::redirect("/users/login/error");
-
 
         # But if we did, login succeeded! 
         } else {
@@ -149,18 +159,21 @@ class users_controller extends base_controller {
         Router::redirect("/");
     }
 
-    public function profile($user_name = NULL) {
+    public function profile($error = NULL) {
         # If user is blank, they're not logged in; redirect them to the login page
         if(!$this->user) {
             Router::redirect('/users/login');
         }
 
-        echo $this->user->avatar;
+        #echo $this->user->avatar;
         # If they weren't redirected away, continue:
 
         # Setup view
         $this->template->content = View::instance('v_users_profile');
-        $this->template->title   = "Profile of".$this->user->first_name;
+        $this->template->title   = "Profile of ".$this->user->first_name;
+
+        # Pass data to the view
+        $this->template->content->error = $error;
 
         # Render template
         echo $this->template;
@@ -169,7 +182,11 @@ class users_controller extends base_controller {
     public function p_profile_upload() {
 
         # Upload the chosen filen and store in avatars directory with the user_id to identify the file
-        Upload::upload($_FILES, "/uploads/avatars/", array("jpg", "jpeg", "gif", "png"), $this->user->user_id);
+        $file = Upload::upload($_FILES, "/uploads/avatars/", array("jpg", "jpeg", "gif", "png"), $this->user->user_id);
+
+        if ($file == 'Invalid file type.') {
+            Router::redirect('/users/profile/error');
+        }
 
         # Update the user's avatar in the database
         DB::instance(DB_NAME)->update('users', Array("avatar" => $this->user->user_id.".jpg"),
