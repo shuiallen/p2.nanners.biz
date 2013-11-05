@@ -171,14 +171,18 @@ class users_controller extends base_controller {
         # Setup view
         $this->template->content = View::instance('v_users_profile');
         $this->template->title   = "Profile of ".$this->user->first_name;
+        $this->template->content->avatar = View::instance('v_users_avatar');
 
         # Pass data to the view
-        $this->template->content->error = $error;
+        $this->template->content->avatar->error = $error;
 
         # Render template
         echo $this->template;
     }
 
+    public function p_update () {
+        echo $_POST;
+    }
     public function p_profile_upload() {
 
         # Upload the chosen filen and store in avatars directory with the user_id to identify the file
