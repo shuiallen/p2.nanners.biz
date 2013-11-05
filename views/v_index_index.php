@@ -16,7 +16,7 @@
 <div class=background-container>
 	<h1> Status </h1>
 	<ul>
-		<li> Required features </li>
+		<li> Required features 
 			<ul>
 				<li>Landing page </li>
 				<li> Sign up, Log in, Log out</li>
@@ -25,30 +25,37 @@
 				<li> Follow and unfollow users </li>
 				<li> View followed posts - does not include self by default, explicitly follow yourself or use My Posts </li>
 			</ul>
-		<li> +1 features </li>
+		</li>
+		<li> +1 features 
 			<ul>
-			<li> View my posts and View all posts, redirect to My posts after adding post</li>
-			<li> Display logged in user's profile; add or replace a profile photo </li>
-			<ul>
-				<li> Layout is not beautiful; Placement of replace profile photo is not great.</li>
+				<li> View my posts and View all posts, redirect to My posts after adding post</li>
+				<li> Display logged in user's profile; add or replace a profile photo </li>
+					<ul>
+						<li> Layout is not beautiful; Placement of replace profile photo is not great.</li>
+					</ul>
 			</ul>
-		</ul>
-		<li> Basic look and feel </li>
+		</li>
+		<li> Basic look and feel
 			<ul>
 				<li> Minimal containers, pretty background</li>
 				<li> Navigation bar with different options if user is logged in or not</li>
 			</ul>
-		<li> Error checking </li>
+		</li>
+		<li> Error checking
 			<ul>
 				<li> Check for blank fields for signup and login </li>
 				<li> Check for unique email addresses on signup</li>
 				<li> Other error conditions ? </li>
 				<li> Upload of invalid file type reports an error </li>
 			</ul>
-
-		<li> check sanitizing for sql injection attacks? </li>
-		<li> todo Review for DRY </li>
-		<li> Code validation - ran once, check again before submitting </li>
-		<li> Run on live server - create users & posts </li>
+		</li>
+		<li> Code structure
+			<ul>			
+				<li> check sanitizing for sql injection attacks? </li>
+				<li> todo Review for DRY </li>
+				<li> Code validation - ran once, check again before submitting </li>
+			</ul>
+		</li>
+		<li> Testing on live server </li>
 	</ul>
 </div>
