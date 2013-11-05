@@ -8,11 +8,11 @@
             <br>
         <?php endif; ?>
         First Name<br>
-        <input type='text' name='first_name' required>
+        <input type='text' name='first_name' >
         <br><br>
 
         Last Name<br>
-        <input type='text' name='last_name' required>
+        <input type='text' name='last_name' >
         <br><br>
 
         Nick Name (optional)<br>
@@ -20,7 +20,7 @@
         <br><br>
 
         Email<br>
-        <input type='text' name='email' required>
+        <input type='text' name='email' >
         <br><br>
 
         <?php if(isset($error)): ?>
@@ -37,7 +37,7 @@
         <?php endif; ?>
 
         Password<br>
-        <input type='password' name='password' required >
+        <input type='password' name='password'  >
         <br><br>
 
         <input type='submit' value='Sign up'>

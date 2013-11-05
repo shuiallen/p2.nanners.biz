@@ -12,8 +12,8 @@ class users_controller extends base_controller {
     public function signup($error = NULL) {
 
         # Setup view
-            $this->template->content = View::instance('v_users_signup');
-            $this->template->title   = "Sign Up";
+        $this->template->content = View::instance('v_users_signup');
+        $this->template->title   = "Sign Up";
 
         # Pass data to the view
         $this->template->content->error = $error;
@@ -24,46 +24,24 @@ class users_controller extends base_controller {
     }
 
     public function p_signup() {
+
+        # Prevent SQL injection attacks by sanitizing the data the user entered in the form
+        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
         # The input form sets required, so this might be overkill in this simple project
         # But this allows signup to be used programmatically
-        # Check input for blank fields , error if any are blank;
-        foreach($_POST as $field => $value){
-            if ($field == 'nickname')
-                continue;
-            if(empty($value)) { 
-               Router::redirect('/users/signup/blanks');  
-            }
-        }       
-
-        # Check that this email address is unique
-        $q = "SELECT email 
-                FROM users 
-                WHERE email = '".$_POST['email']."'"; 
-
-        $email = DB::instance(DB_NAME)->select_field($q);
-        
-        # If we found a record with the same email, reject the signup
-        if($email) {
+        # Check input for blank fields, error if any are blank, skipping exceptions;
+        if(users_controller::hasBlanks($_POST, array('nickname'))) { 
+           Router::redirect('/users/signup/blanks');  
+        }
+   
+        if (!users_controller::uniqueEmail($_POST['email'])) {
             Router::redirect("/users/signup/duplicate");
         }
 
-        # Check that the email address is in a valid format
-        # Comment this out because I want to use non-existent email addresses during testing
-        # and I'm not using real email functions yet
-        // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        //    Router::redirect("/users/signup/invalidemail");
-        // }
-
-        // This is a hack to at least get an email address in the format 'user@emailhost'
-        $atpos = strpos($_POST['email'],'@');
-        $useremail = strstr($_POST['email'], '@', true);
-
-        # If we didn't find an '@' in the email, or
-        # there isn't a string before and after the @
-        // if (!$atpos || !(strlen($useremail) > 0 && $atpos == strlen($email)-1)) {
-
-        //     Router::redirect("/users/signup/invalidemail");
-        // }
+        if (!users_controller::validEmail($_POST['email'])) {
+           Router::redirect("/users/signup/invalidemail");
+        }
 
         # More data we want stored with the user
         $_POST['created']  = Time::now();
@@ -82,6 +60,56 @@ class users_controller extends base_controller {
         # Send them to the login page
         Router::redirect('/users/login');
      
+    }
+
+    // Look for blank values in form data, skipping noted exceptions
+    private function hasBlanks($formdata, $skip) {
+        foreach($formdata as $field => $value){
+            if (in_array($field, $skip))
+                continue;
+            if(empty($value)) { 
+               return true;  
+            }
+        }
+        return false;  
+    }
+
+    // Is this email address already used by an existing user?
+    private function uniqueEmail($email) {
+        # Check that this email address is unique
+        $q = "SELECT email 
+                FROM users 
+                WHERE email = '".$email."'"; 
+
+        $email = DB::instance(DB_NAME)->select_field($q);
+        
+        # If we found a record with the same email, reject the signup
+        if($email) {
+            return false;
+        }
+        return true;
+    }
+
+    // This is a util that could be moved to a Utilities library
+    // This is a hack to at least get an email address in the format 'name@emailhost'
+    private function validEmail($email) {
+        # Check that the email address is in a valid format
+        # Comment this out because I want to use non-existent email addresses during testing
+        # and I'm not using real email functions yet
+        // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        //    Router::redirect("/users/signup/invalidemail");
+        // }
+
+        $atpos = strpos($email,'@');
+        $name = strstr($email, '@', true);
+
+        # If we didn't find an '@' in the email, or
+        # there isn't a string before and after the @
+        if (!$atpos)
+            return false;
+        if (strlen($name) > 0 && strlen($email)-1 > $atpos)
+            return true;
+        return false;
     }
 
     public function login($error = NULL) {
@@ -165,23 +193,38 @@ class users_controller extends base_controller {
             Router::redirect('/users/login');
         }
 
-        #echo $this->user->avatar;
         # If they weren't redirected away, continue:
 
         # Setup view
         $this->template->content = View::instance('v_users_profile');
         $this->template->title   = "Profile of ".$this->user->first_name;
+        # the user's image is handled in a separate view
         $this->template->content->avatar = View::instance('v_users_avatar');
 
         # Pass data to the view
         $this->template->content->avatar->error = $error;
+        $this->template->content->error = $error;
 
         # Render template
         echo $this->template;
     }
 
     public function p_update () {
-        echo $_POST;
+
+        # Prevent SQL injection attacks by sanitizing the data the user entered in the form
+        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
+        // foreach($_POST as $field => $value){
+        //     echo $field."=".$value;
+        //     echo "<br>";
+        // }
+
+
+        # Update the user's data
+        DB::instance(DB_NAME)->update(
+            'users', $_POST, "WHERE user_id = ".$this->user->user_id);
+        Router::redirect("/users/profile");
+       
     }
     public function p_profile_upload() {
 
