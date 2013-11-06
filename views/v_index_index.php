@@ -32,12 +32,18 @@
 			<li> Display logged in user's profile; add or replace a profile photo
 				<ul>
 					<li> Layout is not beautiful; Placement of replace profile photo is not great.</li>
+					<li> Uploads are limited to small files.  I had to duplicate the Upload class in 
+						my library to report a better error message when the photo is too large. I used
+						shrinkpicture to make my photos smaller </li>
 				</ul>
 			</li>
 			<li> A communal photo gallery - anyone can post a photo with a caption
-				<ul>
-					<li> Again the layout is not beautiful but it works.</li>
-				</ul>
+				<ul>e
+					<li> On my local server, it inserts the new photo and displays correctly,
+						but from live server it displays the name of the photo file on a blank page.
+						If you redisplay the gallery page, the new photo appears
+					<li> Again the layout is not beautiful </li>
+					<li> This is an extra +1 feature, I probably don't have time to figure out what's wrong.
 			</li>
 			</ul>
 		</li>
