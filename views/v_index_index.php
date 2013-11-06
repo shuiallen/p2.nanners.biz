@@ -44,6 +44,7 @@
 						If you redisplay the gallery page, the new photo appears
 					<li> Again the layout is not beautiful </li>
 					<li> This is an extra +1 feature, I probably don't have time to figure out what's wrong.
+				</ul>
 			</li>
 			</ul>
 		</li>
