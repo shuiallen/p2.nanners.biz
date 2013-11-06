@@ -38,7 +38,7 @@
 				</ul>
 			</li>
 			<li> A communal photo gallery - anyone can post a photo with a caption
-				<ul>e
+				<ul>
 					<li> On my local server, it inserts the new photo and displays correctly,
 						but from live server it displays the name of the photo file on a blank page.
 						If you redisplay the gallery page, the new photo appears
