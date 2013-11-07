@@ -18,6 +18,19 @@
         <input type='text' name='email' value=<?=$user->email?>>
         <br><br>
 
+        <?php if(isset($error)): ?>
+            <div class='error'>
+                <?php if ($error == "duplicate"): ?>
+                    An existing user is already using this email address.  Please provide a unique email address.
+                   <br>
+                <?elseif ($error == "invalidemail"): ?>
+                    Invalid email address.
+                   <br>
+                <?php endif; ?>
+            </div>
+ 
+        <?php endif; ?>
+        
         <input type='submit' value='Update'>
 
         <?php $error = NULL; ?>

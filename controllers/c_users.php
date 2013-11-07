@@ -224,6 +224,15 @@ class users_controller extends base_controller {
         # Prevent SQL injection attacks by sanitizing the data the user entered in the form
         $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
+        if (!users_controller::uniqueEmail($_POST['email'])) {
+            Router::redirect("/users/profile/duplicate");
+        }
+        
+        if (!users_controller::validEmail($_POST['email'])) {
+           Router::redirect("/users/signup/invalidemail");
+        }
+
+
          # Update the user's data
         DB::instance(DB_NAME)->update(
             'users', $_POST, "WHERE user_id = ".$this->user->user_id);
