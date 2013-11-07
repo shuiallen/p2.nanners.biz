@@ -227,9 +227,9 @@ class users_controller extends base_controller {
         if (!users_controller::uniqueEmail($_POST['email'])) {
             Router::redirect("/users/profile/duplicate");
         }
-        
+
         if (!users_controller::validEmail($_POST['email'])) {
-           Router::redirect("/users/signup/invalidemail");
+           Router::redirect("/users/profile/invalidemail");
         }
 
 
